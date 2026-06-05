@@ -1,0 +1,126 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --Mygreen: #00ff41;
+    --Mygreen-dark: #00c030;
+    --box-bg: rgba(30,30,30,0.85);
+    --font-mono:   'Share Tech Mono', monospace;
+    --font-display:'Orbitron', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background: #000;
+    color: var(--Mygreen);
+    font-family: var(--font-mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.picture{
+    display: grid;
+    grid-template-rows: 340px;
+    grid-template-areas: "stack";
+    width: 100%;
+    overflow: hidden;
+}
+
+.picture > * {
+    grid-area: stack;
+}
+
+.picture_photo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: blur(2px) brightness(0.50);
+}
+
+.picture_fade{
+    align-self: end;
+    height: 60%;
+    background: linear-gradient(to bottom, transparent, #000);
+}
+
+.picture_name{
+    align-self: end;
+    justify-self: center;
+    padding-bottom: 32px;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    color: var(--Mygreen);
+    text-shadow: 0 0 30px #00ff4199, 0 0 60px #00ff4155;
+    letter-spacing: 4px;
+    z-index: 2;
+}
+
+#everything{
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 15px 80px;
+}
+
+#line{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 10px;
+    border-radius: 6px;
+    background: linear-gradient(to bottom, 
+    var(--Mygreen) 0%, 
+    var(--Mygreen-dark) 30%,
+    #006020 65%,
+    #002a0a 100%);
+    box-shadow:0 0 18px #00ff4166;
+    z-index: 0;
+}
+
+#boxes{
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    row-gap: 80px;
+    column-gap: 0;
+}
+
+.box{
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 10px;
+    background: var(--box-bg);
+    border: 1.5px solid var(--Mygreen-dark);
+    border-radius: 15px;
+    padding: 15px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease,
+                transform 0.5s ease
+                border-color 0.3s,
+                box-shadow 0.3s;
+    z-index: 1;
+}
+
+.box.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.box:hover{
+    border-color: var(--green);
+    box-shadow: 0 0 67px /*six seveeeeeeeeeen*/ #00ff4155, 0 0 6px #00ff4133;
+}
+
