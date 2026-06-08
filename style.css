@@ -152,7 +152,6 @@ body{
     place-items: center;
     width: 100%;
     aspect-ratio: 4/3;
-    background: linear-gradient(135deg, #001a06 0%, #003a10 50%, #001a06 100%);
 }
 
 .slider-arrow{
@@ -211,6 +210,8 @@ body{
 
 footer{
     background: var(--box-bg);
+    justify-items: center;
+    padding: 2%;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -221,6 +222,14 @@ h1, h2, h3, h4, h5, h6{
 p, li{
     font-family: var(--font-display);
     color: var(--Mygreen);
+}
+
+a{
+    color: var(--Mygreen);
+}
+
+a:hover{
+    color: var(--Mygreen-dark);
 }
 
 body::after{
