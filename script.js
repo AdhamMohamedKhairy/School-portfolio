@@ -14,11 +14,14 @@ class BoxSlider{
         if(this.total <= 1){
             this._hideArrows()
         }
+        else{
+            this._startAutoSlide();
+        }
     }
 
     goTo(idx){
         this.current = (idx +this.total) % this.total
-        this.track.style.transform = `translateX(-${this.current * 100})`
+        this.track.style.transform = `translateX(-${this.current * 100}%)`
         this._syncDots()
     }
 
@@ -33,6 +36,12 @@ class BoxSlider{
             })
             this.dots.appendChild(dot)
         }
+    }
+
+    _startAutoSlide(){
+        this.interval = setInterval(() => {
+            this.goTo(this.current + 1)
+        }, 5000)
     }
 
     _bindArrow(){
@@ -66,12 +75,12 @@ class Gradient{
     }
 
     apply(){
-        const total = this.card.length
+        const total = this.cards.length
         this.cards.forEach((card, idx) => {
-            const{borderColor, glowColor} = this._colorsAt(idx, total)
+            const{borderColor, glowColor} = this._colorAt(idx, total)
             card.style.borderColor = borderColor
 
-            const sliderWrap = card.querySelector('.slider-wrap')
+            const sliderWrap = card.querySelector('.slider')
             if(sliderWrap){
                 sliderWrap.style.boxShadow = `0 0 0 3px ${borderColor}, 0 0 18px ${glowColor}`
             }
@@ -122,11 +131,11 @@ class Layout{
     place(){
         const box =  this.grid.querySelectorAll('.box')
         if(this._isMobile()){
-            this._placeMobile()
+            this._placeMobile(box)
         }
 
         else{
-            this._placeDesktop()
+            this._placeDesktop(box)
         }
     }
 
@@ -134,7 +143,7 @@ class Layout{
         return window.innerWidth <= Layout.MOBILE_BREAKPOINT
     }
 
-    _placeDesktop(cards){
+    _placeMobile(cards){
         cards.forEach((card, i) => {
             card.style.gridColumn = '1'
             card.style.gridRow = String(i +  1)
