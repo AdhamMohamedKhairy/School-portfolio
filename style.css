@@ -218,11 +218,22 @@ footer{
 h1, h2, h3, h4, h5, h6{
     font-family: var(--font-display);
     color: var(--Mygreen-dark);
+    margin: 10px 10px 10px 0px;
 }
 
 p, li{
     font-family: var(--font-mono);
     color: var(--Mygreen);
+}
+
+.webs{
+    padding: 20px;
+    margin: 30px;
+    background-color: var(--box-bg);
+    border: 2px var(--Mygreen-dark) solid;
+    box-shadow: 0 0 67px /*six seveeeeeeeeeen*/ #00ff4155;
+    border-radius: 20px;
+    max-width: 300px;
 }
 
 a{
